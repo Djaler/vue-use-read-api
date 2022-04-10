@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/Djaler/vue-use-read-api/compare/v0.1.0...v0.1.1) (2022-04-10)
+
+
+### Bug Fixes
+
+* provide rows per page variants in options ([cee5c1c](https://github.com/Djaler/vue-use-read-api/commit/cee5c1c1ad006a84b6c06afec2e6bcd085c5ce05))
+
 ## [0.1.0](https://github.com/Djaler/vue-use-read-api/compare/v0.0.1...v0.1.0) (2022-04-10)
 
 
