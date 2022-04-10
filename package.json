@@ -20,7 +20,6 @@
     "test:debug": "vitest run --threads false",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
-    "build:typings": "ttsc -p tsconfig.build.json",
     "build": "vite build",
     "check-es6": "es-check es6 dist/index.js",
     "check-treeshake": "agadoo dist/index.mjs",
