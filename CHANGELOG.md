@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/Djaler/vue-use-read-api/compare/v0.1.1...v0.1.2) (2022-04-10)
+
+
+### Bug Fixes
+
+* export types ([b2485a4](https://github.com/Djaler/vue-use-read-api/commit/b2485a4e3f7520da7cd79403831eb6da8d356d3f))
+
 ### [0.1.1](https://github.com/Djaler/vue-use-read-api/compare/v0.1.0...v0.1.1) (2022-04-10)
 
 
