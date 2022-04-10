@@ -5,6 +5,7 @@ import { nextTick, Ref, ref } from 'vue-demi';
 
 import { createPromiseMock, flushPromises, PromiseMock } from '../tests/mocks/promises';
 import { mountComposition, MountResult } from '../tests/vue-composition-test-utils';
+import { defaultDebounceTime } from './shared';
 import { UseListApi } from './types';
 import { useFilteredListApi } from './useFilteredListApi';
 
@@ -13,8 +14,6 @@ describe('useFilteredListApi', () => {
     let readList: SpyInstanceFn<[string], Promise<string[]>>;
     let wrapper: MountResult<UseListApi<string>>;
     let filter: Ref<string | undefined>;
-
-    const defaultDebounce = 500;
 
     beforeEach(() => {
         vitest.useFakeTimers();
@@ -44,7 +43,7 @@ describe('useFilteredListApi', () => {
     it('should load list at start after debounce', async () => {
         expect(readList).not.toHaveBeenCalled();
 
-        vitest.advanceTimersByTime(defaultDebounce);
+        vitest.advanceTimersByTime(defaultDebounceTime);
         await nextTick();
 
         expect(readList).toHaveBeenCalledWith('filter');
@@ -54,7 +53,7 @@ describe('useFilteredListApi', () => {
         const result = ['foo', 'bar'];
 
         beforeEach(async () => {
-            vitest.advanceTimersByTime(defaultDebounce);
+            vitest.advanceTimersByTime(defaultDebounceTime);
             promiseMock.resolve(result);
             await flushPromises();
             await nextTick();
@@ -78,7 +77,7 @@ describe('useFilteredListApi', () => {
             });
 
             it('should reload data after debounce', () => {
-                vitest.advanceTimersByTime(defaultDebounce);
+                vitest.advanceTimersByTime(defaultDebounceTime);
 
                 expect(readList).toHaveBeenCalledWith('filter');
             });
@@ -92,7 +91,7 @@ describe('useFilteredListApi', () => {
             });
 
             it('should reload data after debounce with new filter', () => {
-                vitest.advanceTimersByTime(defaultDebounce);
+                vitest.advanceTimersByTime(defaultDebounceTime);
 
                 expect(readList).toHaveBeenCalledWith('filter2');
             });
@@ -103,7 +102,7 @@ describe('useFilteredListApi', () => {
         let error: Error;
 
         beforeEach(async () => {
-            vitest.advanceTimersByTime(defaultDebounce);
+            vitest.advanceTimersByTime(defaultDebounceTime);
 
             error = new Error();
             promiseMock.reject(error);

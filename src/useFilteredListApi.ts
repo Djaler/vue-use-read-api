@@ -2,6 +2,7 @@ import { useDebounceFn } from '@vueuse/core';
 import { nanoid } from 'nanoid';
 import { Ref, ref, watch } from 'vue-demi';
 
+import { defaultDebounceTime } from './shared';
 import { UseListApi } from './types';
 import { asyncFunctionAsVoid } from './utils';
 
@@ -10,7 +11,7 @@ export type ReadFilteredList<T, F> = (filter: F) => Promise<T[]>;
 export function useFilteredListApi<T, F>(
     readList: ReadFilteredList<T, F>,
     filterRef: Ref<F | undefined>,
-    debounceMs = 500,
+    debounceMs = defaultDebounceTime,
 ): UseListApi<T> {
     const loading = ref(false);
     const items: Ref<T[]> = ref([]);

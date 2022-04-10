@@ -5,6 +5,7 @@ import { nextTick, Ref, ref } from 'vue-demi';
 
 import { createPromiseMock, flushPromises, PromiseMock } from '../tests/mocks/promises';
 import { mountComposition, MountResult } from '../tests/vue-composition-test-utils';
+import { defaultDebounceTime } from './shared';
 import { Page, Pagination, UsePageApi } from './types';
 import { useFilteredPageApi } from './useFilteredPageApi';
 import { emptyPage, pageFromList } from './utils';
@@ -14,8 +15,6 @@ describe('useFilteredPageApi', () => {
     let readPage: SpyInstanceFn<[string, Pagination], Promise<Page<string>>>;
     let wrapper: MountResult<UsePageApi<string, any>>;
     let filter: Ref<string | undefined>;
-
-    const defaultDebounce = 500;
 
     beforeEach(() => {
         vitest.useFakeTimers();
@@ -35,7 +34,7 @@ describe('useFilteredPageApi', () => {
     it('should load page at start after debounce', async () => {
         expect(readPage).not.toHaveBeenCalled();
 
-        vitest.advanceTimersByTime(defaultDebounce);
+        vitest.advanceTimersByTime(defaultDebounceTime);
         await nextTick();
 
         expect(readPage).toHaveBeenCalledWith('filter', {
@@ -51,7 +50,7 @@ describe('useFilteredPageApi', () => {
 
         expect(loading.value).toBe(true);
 
-        vitest.advanceTimersByTime(defaultDebounce);
+        vitest.advanceTimersByTime(defaultDebounceTime);
         promiseMock.resolve(emptyPage());
         await flushPromises();
 
@@ -60,7 +59,7 @@ describe('useFilteredPageApi', () => {
 
     describe('after load', () => {
         beforeEach(async () => {
-            vitest.advanceTimersByTime(defaultDebounce);
+            vitest.advanceTimersByTime(defaultDebounceTime);
             promiseMock.resolve(pageFromList(['1', '2', '3']));
             await flushPromises();
         });
@@ -89,7 +88,7 @@ describe('useFilteredPageApi', () => {
                 const { contentId } = wrapper.result.current!;
                 const oldValue = contentId.value;
 
-                vitest.advanceTimersByTime(defaultDebounce);
+                vitest.advanceTimersByTime(defaultDebounceTime);
                 await flushPromises();
 
                 expect(contentId.value).not.toBeNull();
@@ -107,7 +106,7 @@ describe('useFilteredPageApi', () => {
             });
 
             it('should reload page after debounce', () => {
-                vitest.advanceTimersByTime(defaultDebounce);
+                vitest.advanceTimersByTime(defaultDebounceTime);
 
                 expect(readPage).toHaveBeenCalledWith('filter', {
                     page: 1,
@@ -130,7 +129,7 @@ describe('useFilteredPageApi', () => {
             });
 
             it('should reload page after debounce with new page', () => {
-                vitest.advanceTimersByTime(defaultDebounce);
+                vitest.advanceTimersByTime(defaultDebounceTime);
 
                 expect(readPage).toHaveBeenCalledWith('filter', {
                     page: 2,
@@ -156,7 +155,7 @@ describe('useFilteredPageApi', () => {
                 });
 
                 it('should reload page after debounce with new rowsPerPage', () => {
-                    vitest.advanceTimersByTime(defaultDebounce);
+                    vitest.advanceTimersByTime(defaultDebounceTime);
 
                     expect(readPage).toHaveBeenCalledWith('filter', {
                         page: 1,
@@ -174,14 +173,14 @@ describe('useFilteredPageApi', () => {
                     const { page, rowsPerPage } = wrapper.result.current!;
 
                     page.value = 2;
-                    vitest.advanceTimersByTime(defaultDebounce);
+                    vitest.advanceTimersByTime(defaultDebounceTime);
                     readPage.mockClear();
 
                     rowsPerPage.value = 25;
                 });
 
                 it('should reload page after debounce with new rowsPerPage and on first page', () => {
-                    vitest.advanceTimersByTime(defaultDebounce);
+                    vitest.advanceTimersByTime(defaultDebounceTime);
 
                     expect(readPage).toHaveBeenCalledWith('filter', {
                         page: 1,
@@ -208,7 +207,7 @@ describe('useFilteredPageApi', () => {
             });
 
             it('should reload page after debounce with new sort', () => {
-                vitest.advanceTimersByTime(defaultDebounce);
+                vitest.advanceTimersByTime(defaultDebounceTime);
 
                 expect(readPage).toHaveBeenCalledWith('filter', {
                     page: 1,
@@ -229,7 +228,7 @@ describe('useFilteredPageApi', () => {
             });
 
             it('should reload page after debounce with new filter', () => {
-                vitest.advanceTimersByTime(defaultDebounce);
+                vitest.advanceTimersByTime(defaultDebounceTime);
 
                 expect(readPage).toHaveBeenCalledWith('filter2', {
                     page: 1,
