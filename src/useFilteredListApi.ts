@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { Ref, ref, watch } from 'vue-demi';
 
 import { defaultDebounceTime } from './shared';
-import { UseListApi } from './types';
+import { UseFilteredListApiOptions, UseListApi } from './types';
 import { asyncFunctionAsVoid } from './utils';
 
 export type ReadFilteredList<T, F> = (filter: F) => Promise<T[]>;
@@ -11,8 +11,10 @@ export type ReadFilteredList<T, F> = (filter: F) => Promise<T[]>;
 export function useFilteredListApi<T, F>(
     readList: ReadFilteredList<T, F>,
     filterRef: Ref<F | undefined>,
-    debounceMs = defaultDebounceTime,
+    options?: UseFilteredListApiOptions,
 ): UseListApi<T> {
+    const debounceTime = options?.debounceMs ?? defaultDebounceTime;
+
     const loading = ref(false);
     const items: Ref<T[]> = ref([]);
     const itemsId = ref<string | null>(null);
@@ -29,7 +31,7 @@ export function useFilteredListApi<T, F>(
         }
     }
 
-    const debouncedLoad = useDebounceFn(asyncFunctionAsVoid(load), debounceMs);
+    const debouncedLoad = useDebounceFn(asyncFunctionAsVoid(load), debounceTime);
 
     function update() {
         if (filterRef.value === undefined) {

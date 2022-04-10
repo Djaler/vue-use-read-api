@@ -2,7 +2,7 @@ import { useDebounceFn } from '@vueuse/core';
 import { Ref, ref, watch } from 'vue-demi';
 
 import { defaultDebounceTime } from './shared';
-import { Page, Pagination, UsePageApi } from './types';
+import { Page, Pagination, UsePageApi, UsePageApiOptions } from './types';
 import { usePageConsumer, usePagination } from './usePagination';
 import { asyncFunctionAsVoid } from './utils';
 
@@ -11,8 +11,10 @@ export type ReadFilteredPage<T, F> = (filter: F, pagination: Pagination) => Prom
 export function useFilteredPageApi<T, F, R extends number[]>(
     readPage: ReadFilteredPage<T, F>,
     filterRef: Ref<F | undefined>,
-    debounceMs = defaultDebounceTime,
+    options?: UsePageApiOptions,
 ): UsePageApi<T, R> {
+    const debounceTime = options?.debounceMs ?? defaultDebounceTime;
+
     const {
         currentPage,
         rowsPerPage,
@@ -36,7 +38,7 @@ export function useFilteredPageApi<T, F, R extends number[]>(
         }
     }
 
-    const debouncedLoad = useDebounceFn(asyncFunctionAsVoid(load), debounceMs);
+    const debouncedLoad = useDebounceFn(asyncFunctionAsVoid(load), debounceTime);
 
     function update() {
         if (filterRef.value === undefined) {

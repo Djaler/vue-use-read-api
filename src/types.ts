@@ -1,5 +1,9 @@
 import { Ref } from 'vue-demi';
 
+export interface UseFilteredListApiOptions {
+    debounceMs?: number;
+}
+
 export interface UseListApi<T> {
     items: Ref<T[]>;
     itemsId: Ref<string | null>;
@@ -24,6 +28,10 @@ export interface Page<T> {
 export interface SortOptions {
     sortBy: string[];
     sortDesc?: boolean[];
+}
+
+export interface UsePageApiOptions {
+    debounceMs?: number;
 }
 
 export interface UsePageApi<T, R extends number[]> {

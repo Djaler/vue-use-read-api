@@ -2,7 +2,7 @@ import { useDebounceFn } from '@vueuse/core';
 import { ref, watch } from 'vue-demi';
 
 import { defaultDebounceTime } from './shared';
-import { Page, Pagination, UsePageApi } from './types';
+import { Page, Pagination, UsePageApi, UsePageApiOptions } from './types';
 import { usePageConsumer, usePagination } from './usePagination';
 import { asyncFunctionAsVoid } from './utils';
 
@@ -10,8 +10,10 @@ export type ReadPage<T> = (pagination: Pagination) => Promise<Page<T>>;
 
 export function usePageApi<T, R extends number[]>(
     readPage: ReadPage<T>,
-    debounceMs = defaultDebounceTime,
+    options?: UsePageApiOptions,
 ): UsePageApi<T, R> {
+    const debounceTime = options?.debounceMs ?? defaultDebounceTime;
+
     const {
         currentPage,
         rowsPerPage,
@@ -35,7 +37,7 @@ export function usePageApi<T, R extends number[]>(
         }
     }
 
-    const debouncedLoad = useDebounceFn(asyncFunctionAsVoid(load), debounceMs);
+    const debouncedLoad = useDebounceFn(asyncFunctionAsVoid(load), debounceTime);
 
     function update() {
         loading.value = true;
