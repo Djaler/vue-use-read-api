@@ -32,12 +32,13 @@ export interface SortOptions {
 
 export interface UsePageApiOptions {
     debounceMs?: number;
+    rowsPerPageVariants?: number[];
 }
 
-export interface UsePageApi<T, R extends number[]> {
+export interface UsePageApi<T> {
     content: Ref<T[]>;
     contentId: Ref<string | null>;
-    rowsPerPage: Ref<R[number]>;
+    rowsPerPage: Ref<number>;
     page: Ref<number>;
     sort: Ref<SortOptions>;
     totalItems: Ref<number>;

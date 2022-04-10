@@ -8,10 +8,10 @@ import { asyncFunctionAsVoid } from './utils';
 
 export type ReadPage<T> = (pagination: Pagination) => Promise<Page<T>>;
 
-export function usePageApi<T, R extends number[]>(
+export function usePageApi<T>(
     readPage: ReadPage<T>,
     options?: UsePageApiOptions,
-): UsePageApi<T, R> {
+): UsePageApi<T> {
     const debounceTime = options?.debounceMs ?? defaultDebounceTime;
 
     const {
@@ -19,7 +19,7 @@ export function usePageApi<T, R extends number[]>(
         rowsPerPage,
         sort,
         pagination,
-    } = usePagination([10, 25, 50]);
+    } = usePagination(options?.rowsPerPageVariants);
 
     const { consume: consumePage, content, contentId, totalItems, totalPages } = usePageConsumer<T>();
 

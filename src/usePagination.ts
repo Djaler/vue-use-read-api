@@ -1,11 +1,12 @@
 import { nanoid } from 'nanoid';
 import { computed, Ref, ref, watch } from 'vue-demi';
 
+import { defaultRowsPerPage } from './shared';
 import { Page, Pagination } from './types';
 
-export function usePagination<R extends number[]>(rowsPerPageVariants: R) {
+export function usePagination(rowsPerPageVariants?: number[]) {
     const currentPage = ref(1);
-    const rowsPerPage = ref(rowsPerPageVariants[0]);
+    const rowsPerPage = ref(rowsPerPageVariants?.[0] ?? defaultRowsPerPage);
 
     watch(rowsPerPage, () => {
         currentPage.value = 1;

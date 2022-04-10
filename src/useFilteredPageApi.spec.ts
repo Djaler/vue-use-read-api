@@ -13,7 +13,7 @@ import { emptyPage, pageFromList } from './utils';
 describe('useFilteredPageApi', () => {
     let promiseMock: PromiseMock<Page<string>>;
     let readPage: SpyInstanceFn<[string, Pagination], Promise<Page<string>>>;
-    let wrapper: MountResult<UsePageApi<string, any>>;
+    let wrapper: MountResult<UsePageApi<string>>;
     let filter: Ref<string | undefined>;
 
     beforeEach(() => {

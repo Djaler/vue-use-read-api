@@ -13,7 +13,7 @@ import { emptyPage, pageFromList } from './utils';
 describe('usePageApi', () => {
     let promiseMock: PromiseMock<Page<string>>;
     let readPage: SpyInstanceFn<[Pagination], Promise<Page<string>>>;
-    let wrapper: MountResult<UsePageApi<string, any>>;
+    let wrapper: MountResult<UsePageApi<string>>;
 
     beforeEach(() => {
         vitest.useFakeTimers();
