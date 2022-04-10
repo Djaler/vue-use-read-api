@@ -1,6 +1,6 @@
-import { Ref, ref, watch } from '@vue/composition-api';
 import { useDebounceFn } from '@vueuse/core';
 import { nanoid } from 'nanoid';
+import { Ref, ref, watch } from 'vue-demi';
 
 import { UseListApi } from './types';
 import { asyncFunctionAsVoid } from './utils';

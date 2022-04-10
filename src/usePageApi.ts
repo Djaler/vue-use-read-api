@@ -1,5 +1,5 @@
-import { ref, watch } from '@vue/composition-api';
 import { useDebounceFn } from '@vueuse/core';
+import { ref, watch } from 'vue-demi';
 
 import { Page, Pagination, UsePageApi } from './types';
 import { usePageConsumer, usePagination } from './usePagination';

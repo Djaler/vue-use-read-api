@@ -1,5 +1,5 @@
-import { computed, Ref, ref, watch } from '@vue/composition-api';
 import { nanoid } from 'nanoid';
+import { computed, Ref, ref, watch } from 'vue-demi';
 
 import { Page, Pagination } from './types';
 

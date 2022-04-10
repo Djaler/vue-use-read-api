@@ -1,4 +1,4 @@
-import { Ref } from '@vue/composition-api';
+import { Ref } from 'vue-demi';
 
 export interface UseListApi<T> {
     items: Ref<T[]>;

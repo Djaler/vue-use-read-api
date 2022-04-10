@@ -1,7 +1,7 @@
-import { nextTick, Ref, ref } from '@vue/composition-api';
 import {
     afterEach, beforeEach, describe, expect, it, SpyInstanceFn, vitest,
 } from 'vitest';
+import { nextTick, Ref, ref } from 'vue-demi';
 
 import { createPromiseMock, flushPromises, PromiseMock } from '../tests/mocks/promises';
 import { mountComposition, MountResult } from '../tests/vue-composition-test-utils';

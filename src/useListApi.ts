@@ -1,5 +1,5 @@
-import { Ref, ref } from '@vue/composition-api';
 import { nanoid } from 'nanoid';
+import { Ref, ref } from 'vue-demi';
 
 import { UseListApi } from './types';
 
