@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/Djaler/vue-use-read-api/compare/v0.1.3...v0.1.4) (2022-04-11)
+
+
+### Bug Fixes
+
+* required sortDesc field in sort options ([1b67014](https://github.com/Djaler/vue-use-read-api/commit/1b670142e0b31e8b0957e594ae9c841ffacb7d36))
+
 ### [0.1.3](https://github.com/Djaler/vue-use-read-api/compare/v0.1.2...v0.1.3) (2022-04-11)
 
 
