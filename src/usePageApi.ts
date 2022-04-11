@@ -56,5 +56,6 @@ export function usePageApi<T>(
         totalPages,
         loading,
         update,
+        error,
     };
 }

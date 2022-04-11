@@ -45,4 +45,5 @@ export interface UsePageApi<T> {
     totalPages: Ref<number>;
     loading: Ref<boolean>;
     update: () => void;
+    error: Ref<unknown>;
 }

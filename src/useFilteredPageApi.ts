@@ -69,5 +69,6 @@ export function useFilteredPageApi<T, F>(
         totalPages,
         loading,
         update,
+        error,
     };
 }

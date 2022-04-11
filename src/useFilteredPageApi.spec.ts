@@ -241,4 +241,23 @@ describe('useFilteredPageApi', () => {
             itShouldUpdateContentIdAfterPageLoad();
         });
     });
+
+    describe('on error', () => {
+        let error: Error;
+
+        beforeEach(async () => {
+            error = new Error();
+            vitest.advanceTimersByTime(defaultDebounceTime);
+            promiseMock.reject(error);
+            await flushPromises();
+        });
+
+        it('should disable loading flag', () => {
+            expect(wrapper.result.current?.loading.value).toBe(false);
+        });
+
+        it('should set error ref', () => {
+            expect(wrapper.result.current?.error.value).toBe(error);
+        });
+    });
 });
