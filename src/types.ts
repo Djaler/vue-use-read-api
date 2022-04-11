@@ -27,7 +27,7 @@ export interface Page<T> {
 
 export interface SortOptions {
     sortBy: string[];
-    sortDesc?: boolean[];
+    sortDesc: boolean[];
 }
 
 export interface UsePageApiOptions {

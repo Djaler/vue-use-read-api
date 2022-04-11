@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import { computed, Ref, ref, watch } from 'vue-demi';
 
 import { defaultRowsPerPage } from './shared';
-import { Page, Pagination } from './types';
+import { Page, Pagination, SortOptions } from './types';
 
 export function usePagination(rowsPerPageVariants?: number[]) {
     const currentPage = ref(1);
@@ -12,9 +12,9 @@ export function usePagination(rowsPerPageVariants?: number[]) {
         currentPage.value = 1;
     });
 
-    const sort = ref({
-        sortBy: [] as string[],
-        sortDesc: [] as boolean[],
+    const sort = ref<SortOptions>({
+        sortBy: [],
+        sortDesc: [],
     });
 
     const pagination = computed((): Pagination => ({
