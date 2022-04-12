@@ -35,15 +35,10 @@ export interface UsePageApiOptions {
     rowsPerPageVariants?: number[];
 }
 
-export interface UsePageApi<T> {
-    items: Ref<T[]>;
-    itemsId: Ref<string | null>;
+export interface UsePageApi<T> extends UseListApi<T> {
     rowsPerPage: Ref<number>;
     page: Ref<number>;
     sort: Ref<SortOptions>;
     totalItems: Ref<number>;
     totalPages: Ref<number>;
-    loading: Ref<boolean>;
-    update: () => void;
-    error: Ref<unknown>;
 }
