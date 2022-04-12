@@ -36,8 +36,8 @@ export interface UsePageApiOptions {
 }
 
 export interface UsePageApi<T> {
-    content: Ref<T[]>;
-    contentId: Ref<string | null>;
+    items: Ref<T[]>;
+    itemsId: Ref<string | null>;
     rowsPerPage: Ref<number>;
     page: Ref<number>;
     sort: Ref<SortOptions>;

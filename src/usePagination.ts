@@ -33,21 +33,21 @@ export function usePagination(rowsPerPageVariants?: number[]) {
 }
 
 export function usePageConsumer<T>() {
-    const content: Ref<T[]> = ref([]);
-    const contentId = ref<string | null>(null);
+    const items: Ref<T[]> = ref([]);
+    const itemsId = ref<string | null>(null);
     const totalItems = ref(0);
     const totalPages = ref(0);
 
     function consume(page: Page<T>) {
         totalItems.value = page.totalElements;
         totalPages.value = page.totalPages;
-        content.value = page.content;
-        contentId.value = nanoid();
+        items.value = page.content;
+        itemsId.value = nanoid();
     }
 
     return {
-        content,
-        contentId,
+        items,
+        itemsId,
         totalItems,
         totalPages,
         consume,

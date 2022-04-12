@@ -63,10 +63,10 @@ describe('usePageApi', () => {
             await flushPromises();
         });
 
-        it('should set content from loaded page', () => {
-            const { content } = (wrapper.result.current)!;
+        it('should set items from loaded page', () => {
+            const { items } = (wrapper.result.current)!;
 
-            expect(content.value).toEqual(['1', '2', '3']);
+            expect(items.value).toEqual(['1', '2', '3']);
         });
 
         it('should set total counts from loaded page', () => {
@@ -76,22 +76,22 @@ describe('usePageApi', () => {
             expect(totalPages.value).toBe(1);
         });
 
-        it('should set contentId', () => {
-            const { contentId } = wrapper.result.current!;
+        it('should set itemsId', () => {
+            const { itemsId } = wrapper.result.current!;
 
-            expect(contentId.value).not.toBeNull();
+            expect(itemsId.value).not.toBeNull();
         });
 
-        function itShouldUpdateContentIdAfterPageLoad() {
-            it('should update contentId after page load', async () => {
-                const { contentId } = wrapper.result.current!;
-                const oldValue = contentId.value;
+        function itShouldUpdateItemsIdAfterPageLoad() {
+            it('should update itemsId after page load', async () => {
+                const { itemsId } = wrapper.result.current!;
+                const oldValue = itemsId.value;
 
                 vitest.advanceTimersByTime(defaultDebounceTime);
                 await flushPromises();
 
-                expect(contentId.value).not.toBeNull();
-                expect(contentId.value).not.toEqual(oldValue);
+                expect(itemsId.value).not.toBeNull();
+                expect(itemsId.value).not.toEqual(oldValue);
             });
         }
 
@@ -115,7 +115,7 @@ describe('usePageApi', () => {
                 });
             });
 
-            itShouldUpdateContentIdAfterPageLoad();
+            itShouldUpdateItemsIdAfterPageLoad();
         });
 
         describe('on page change', () => {
@@ -138,7 +138,7 @@ describe('usePageApi', () => {
                 });
             });
 
-            itShouldUpdateContentIdAfterPageLoad();
+            itShouldUpdateItemsIdAfterPageLoad();
         });
 
         describe('on rows per page change', () => {
@@ -164,7 +164,7 @@ describe('usePageApi', () => {
                     });
                 });
 
-                itShouldUpdateContentIdAfterPageLoad();
+                itShouldUpdateItemsIdAfterPageLoad();
             });
 
             describe('if was not on first page', () => {
@@ -189,7 +189,7 @@ describe('usePageApi', () => {
                     });
                 });
 
-                itShouldUpdateContentIdAfterPageLoad();
+                itShouldUpdateItemsIdAfterPageLoad();
             });
         });
 
@@ -216,7 +216,7 @@ describe('usePageApi', () => {
                 });
             });
 
-            itShouldUpdateContentIdAfterPageLoad();
+            itShouldUpdateItemsIdAfterPageLoad();
         });
     });
 

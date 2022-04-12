@@ -21,7 +21,7 @@ export function usePageApi<T>(
         pagination,
     } = usePagination(options?.rowsPerPageVariants);
 
-    const { consume: consumePage, content, contentId, totalItems, totalPages } = usePageConsumer<T>();
+    const { consume: consumePage, items, itemsId, totalItems, totalPages } = usePageConsumer<T>();
 
     const loading = ref(false);
     const error = ref<unknown>(null);
@@ -47,8 +47,8 @@ export function usePageApi<T>(
     watch(pagination, update, { immediate: true });
 
     return {
-        content,
-        contentId,
+        items,
+        itemsId,
         rowsPerPage,
         page: currentPage,
         sort,
