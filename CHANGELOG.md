@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/Djaler/vue-use-read-api/compare/v0.1.4...v0.1.5) (2022-04-12)
+
+
+### Improvements
+
+* rename content to items in UsePageApi to be consistent with UseListApi ([4758406](https://github.com/Djaler/vue-use-read-api/commit/4758406d57eb20e204430834f7f0eaa21ca92bd0))
+
 ### [0.1.4](https://github.com/Djaler/vue-use-read-api/compare/v0.1.3...v0.1.4) (2022-04-11)
 
 
