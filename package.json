@@ -65,7 +65,7 @@
     "eslint": "7.32.0",
     "eslint-import-resolver-typescript": "2.7.1",
     "jsdom": "19.0.0",
-    "nano-staged": "0.6.0",
+    "nano-staged": "0.8.0",
     "simple-git-hooks": "2.7.0",
     "simple-promise-mock": "1.0.0",
     "standard-version": "9.3.2",
