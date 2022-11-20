@@ -36,7 +36,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "sideEffects": false,
-  "packageManager": "pnpm@6.32.4",
+  "packageManager": "pnpm@6.35.1",
   "dependencies": {
     "@vueuse/core": "^8.2.4",
     "nanoid": "^3.3.2",
