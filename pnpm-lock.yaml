@@ -21,7 +21,7 @@ specifiers:
   simple-promise-mock: 1.0.0
   standard-version: 9.3.2
   typescript: 4.6.3
-  vite: 2.9.1
+  vite: 2.9.16
   vite-plugin-dts: 1.0.5
   vitest: 0.8.4
   vue: 2.6.14
@@ -52,8 +52,8 @@ devDependencies:
   simple-promise-mock: 1.0.0
   standard-version: 9.3.2
   typescript: 4.6.3
-  vite: 2.9.1
-  vite-plugin-dts: 1.0.5_vite@2.9.1
+  vite: 2.9.16
+  vite-plugin-dts: 1.0.5_vite@2.9.16
   vitest: 0.8.4_c8@7.11.0+jsdom@19.0.0
   vue: 2.6.14
   vue-template-compiler: 2.6.14
@@ -3342,6 +3342,13 @@ packages:
     resolution: {integrity: sha512-CuHBogktKwpm5g2sRgv83jEy2ijFzBwMoYA60orPDR7ynsLijJDqgsi4RDGj3OJpy3Ieb+LYwiRmIOGyytgITA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+    dev: false
+
+  /nanoid/3.3.6:
+    resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+    dev: true
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
@@ -3701,11 +3708,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /postcss/8.4.12:
-    resolution: {integrity: sha512-lg6eITwYe9v6Hr5CncVbK70SoioNQIq81nsaG86ev5hAidQvmOeETBqs7jm43K2F5/Ley3ytDtriImV6TpNiSg==}
+  /postcss/8.4.24:
+    resolution: {integrity: sha512-M0RzbcI0sO/XJNucsGjvWU9ERWxb/ytp1w6dKtxTKgixdtQDq4rmx/g8W1hnaheq9jgwL/oyEdH5Bc4WwJKMqg==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
-      nanoid: 3.3.2
+      nanoid: 3.3.6
       picocolors: 1.0.0
       source-map-js: 1.0.2
     dev: true
@@ -4643,7 +4650,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-dts/1.0.5_vite@2.9.1:
+  /vite-plugin-dts/1.0.5_vite@2.9.16:
     resolution: {integrity: sha512-gTm9f+yUK88fNngpxdQIDpGk7oeWnD01fnKOmS2Z9sTRKTmDfMowXGE78g1mxfNMApnt99RNS0CNq9qc+RMCQA==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -4654,13 +4661,13 @@ packages:
       fast-glob: 3.2.11
       fs-extra: 10.0.1
       ts-morph: 14.0.0
-      vite: 2.9.1
+      vite: 2.9.16
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/2.9.1:
-    resolution: {integrity: sha512-vSlsSdOYGcYEJfkQ/NeLXgnRv5zZfpAsdztkIrs7AZHV8RCMZQkwjo4DS5BnrYTqoWqLoUe1Cah4aVO4oNNqCQ==}
+  /vite/2.9.16:
+    resolution: {integrity: sha512-X+6q8KPyeuBvTQV8AVSnKDvXoBMnTx8zxh54sOwmmuOdxkjMmEJXH2UEchA+vTMps1xw9vL64uwJOWryULg7nA==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
@@ -4676,7 +4683,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.14.32
-      postcss: 8.4.12
+      postcss: 8.4.24
       resolve: 1.22.0
       rollup: 2.70.1
     optionalDependencies:
@@ -4710,7 +4717,7 @@ packages:
       local-pkg: 0.4.1
       tinypool: 0.1.2
       tinyspy: 0.3.1
-      vite: 2.9.1
+      vite: 2.9.16
     transitivePeerDependencies:
       - less
       - sass
